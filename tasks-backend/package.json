@@ -4,9 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "1.18.3",
+    "consign": "0.1.6",
+    "cors": "2.8.4",
+    "express": "4.16.3",
+    "jwt-simple": "0.5.1",
+    "knex": "0.15.2",
+    "moment": "2.22.2",
+    "passport": "0.4.0",
+    "passport-jwt": "4.0.0",
+    "pg": "7.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.4"
+  }
 }
