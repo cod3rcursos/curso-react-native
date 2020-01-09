@@ -4,14 +4,13 @@ import {
     Text,
     StyleSheet,
     View,
-    TextInput,
     TouchableOpacity,
-    Platform,
     Alert
 } from 'react-native'
 
 import backgroundImage from '../../assets/imgs/login.jpg'
 import commonStyles from '../commonStyles'
+import AuthInput from '../components/AuthInput'
 
 export default class Auth extends Component {
 
@@ -41,18 +40,22 @@ export default class Auth extends Component {
                         {this.state.stageNew ? 'Crie a sua conta' : 'Informe seus dados'}
                     </Text>
                     {this.state.stageNew &&
-                        <TextInput placeholder='Nome' value={this.state.name}
+                        <AuthInput icon='user' placeholder='Nome'
+                            value={this.state.name}
                             style={styles.input}
                             onChangeText={name => this.setState({ name })} />
                     }
-                    <TextInput placeholder='E-mail' value={this.state.email}
+                    <AuthInput icon='at' placeholder='E-mail'
+                        value={this.state.email}
                         style={styles.input}
                         onChangeText={email => this.setState({ email })} />
-                    <TextInput placeholder='Senha' value={this.state.password}
+                    <AuthInput icon='lock' placeholder='Senha'
+                        value={this.state.password}
                         style={styles.input} secureTextEntry={true}
                         onChangeText={password => this.setState({ password })} />
                     {this.state.stageNew &&
-                        <TextInput placeholder='Confirmação de Senha'
+                        <AuthInput icon='asterisk'
+                            placeholder='Confirmação de Senha'
                             value={this.state.confirmPassword}
                             style={styles.input} secureTextEntry={true}
                             onChangeText={confirmPassword => this.setState({ confirmPassword })} />
@@ -103,14 +106,14 @@ const styles = StyleSheet.create({
     },
     input: {
         marginTop: 10,
-        backgroundColor: '#FFF',
-        padding: Platform.OS == 'ios' ? 15 : 10 
+        backgroundColor: '#FFF'
     },
     button: {
         backgroundColor: '#080',
         marginTop: 10,
         padding: 10,
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: 7
     },
     buttonText: {
         fontFamily: commonStyles.fontFamily,
