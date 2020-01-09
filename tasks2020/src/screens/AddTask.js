@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {
+    Platform,
     Modal,
     View,
     Text,
@@ -9,11 +10,12 @@ import {
     TouchableWithoutFeedback
 } from 'react-native'
 
+import moment from 'moment'
 import DateTimePicker from '@react-native-community/datetimepicker'
 
 import commonStyles from '../commonStyles'
 
-const initialState = { desc: '', date: new Date() }
+const initialState = { desc: '', date: new Date(), showDatePicker: false }
 
 export default class AddTask extends Component {
 
@@ -21,10 +23,27 @@ export default class AddTask extends Component {
         ...initialState
     }
 
-    getDateTimePicker = () => {
-        return <DateTimePicker value={this.state.date}
-            onChange={(_, date) => this.setState({ date })}
+    getDatePicker = () => {
+        let datePicker = <DateTimePicker value={this.state.date}
+            onChange={(_, date) => this.setState({ date, showDatePicker: false })}
             mode='date' />
+        
+        const dateString = moment(this.state.date).format('ddd, D [de] MMMM [de] YYYY')
+
+        if(Platform.OS === 'android') {
+            datePicker = (
+                <View>
+                    <TouchableOpacity onPress={() => this.setState({ showDatePicker: true })}>
+                        <Text style={styles.date}>
+                            {dateString}
+                        </Text>
+                    </TouchableOpacity>
+                    {this.state.showDatePicker && datePicker}
+                </View>
+            )
+        }
+        
+        return datePicker
     }
 
     render() {
@@ -42,7 +61,7 @@ export default class AddTask extends Component {
                         placeholder="Informe a Descrição..."
                         onChangeText={desc => this.setState({ desc })}
                         value={this.state.desc} />
-                    {this.getDateTimePicker()}
+                    {this.getDatePicker()}
                     <View style={styles.buttons}>
                         <TouchableOpacity onPress={this.props.onCancel}>
                             <Text style={styles.button}>Cancelar</Text>
@@ -94,5 +113,10 @@ const styles = StyleSheet.create({
         margin: 20,
         marginRight: 30,
         color: commonStyles.colors.today
+    },
+    date: {
+        fontFamily: commonStyles.fontFamily,
+        fontSize: 20,
+        marginLeft: 15
     }
 })
