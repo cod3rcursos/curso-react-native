@@ -11,18 +11,18 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
-    "body-parser": "1.18.3",
+    "body-parser": "1.19.0",
     "consign": "0.1.6",
-    "cors": "2.8.4",
-    "express": "4.16.3",
-    "jwt-simple": "0.5.1",
-    "knex": "0.15.2",
-    "moment": "2.22.2",
-    "passport": "0.4.0",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "jwt-simple": "0.5.6",
+    "knex": "0.20.7",
+    "moment": "2.24.0",
+    "passport": "0.4.1",
     "passport-jwt": "4.0.0",
-    "pg": "7.4.3"
+    "pg": "7.17.0"
   },
   "devDependencies": {
-    "nodemon": "1.18.4"
+    "nodemon": "2.0.2"
   }
 }

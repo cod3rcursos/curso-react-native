@@ -8,7 +8,7 @@ module.exports = app => {
         secretOrKey: authSecret,
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     }
-
+    
     const strategy = new Strategy(params, (payload, done) => {
         app.db('users')
             .where({ id: payload.id })
