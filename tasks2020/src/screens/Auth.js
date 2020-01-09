@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 
 import axios from 'axios'
+import AsyncStorage from '@react-native-community/async-storage'
 
 import backgroundImage from '../../assets/imgs/login.jpg'
 import commonStyles from '../commonStyles'
@@ -31,7 +32,7 @@ export default class Auth extends Component {
     }
 
     signinOrSignup = () => {
-        if (this.state.stageNew) {
+        if(this.state.stageNew) {
             this.signup()
         } else {
             this.signin()
@@ -49,7 +50,7 @@ export default class Auth extends Component {
 
             showSuccess('Usuário cadastro!')
             this.setState({ ...initialState })
-        } catch (e) {
+        } catch(e) {
             showError(e)
         }
     }
@@ -61,19 +62,20 @@ export default class Auth extends Component {
                 password: this.state.password
             })
 
+            AsyncStorage.setItem('userData', JSON.stringify(res.data))
             axios.defaults.headers.common['Authorization'] = `bearer ${res.data.token}`
             this.props.navigation.navigate('Home', res.data)
-        } catch (e) {
+        } catch(e) {
             showError(e)
         }
     }
-
+    
     render() {
         const validations = []
         validations.push(this.state.email && this.state.email.includes('@'))
         validations.push(this.state.password && this.state.password.length >= 6)
 
-        if (this.state.stageNew) {
+        if(this.state.stageNew) {
             validations.push(this.state.name && this.state.name.trim().length >= 3)
             validations.push(this.state.password === this.state.confirmPassword)
         }
