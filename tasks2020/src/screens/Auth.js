@@ -31,7 +31,7 @@ export default class Auth extends Component {
     }
 
     signinOrSignup = () => {
-        if(this.state.stageNew) {
+        if (this.state.stageNew) {
             this.signup()
         } else {
             this.signin()
@@ -49,7 +49,7 @@ export default class Auth extends Component {
 
             showSuccess('Usuário cadastro!')
             this.setState({ ...initialState })
-        } catch(e) {
+        } catch (e) {
             showError(e)
         }
     }
@@ -62,18 +62,18 @@ export default class Auth extends Component {
             })
 
             axios.defaults.headers.common['Authorization'] = `bearer ${res.data.token}`
-            this.props.navigation.navigate('Home')
-        } catch(e) {
+            this.props.navigation.navigate('Home', res.data)
+        } catch (e) {
             showError(e)
         }
     }
-    
+
     render() {
         const validations = []
         validations.push(this.state.email && this.state.email.includes('@'))
         validations.push(this.state.password && this.state.password.length >= 6)
 
-        if(this.state.stageNew) {
+        if (this.state.stageNew) {
             validations.push(this.state.name && this.state.name.trim().length >= 3)
             validations.push(this.state.password === this.state.confirmPassword)
         }
