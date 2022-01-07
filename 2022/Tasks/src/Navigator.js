@@ -17,15 +17,17 @@ const menuConfig = {
     labelStyle: {
         fontFamily: commonStyles.fontFamily,
         fontWeight: 'normal',
-        fontSize: 20
+        fontSize: 20,
     },
     activeTintColor: '#080',
+    headerShown: false,
 }
 
 const DrawerNavigator = props => {
     const { email, name } = props.route.params
     return (
-        <Drawer.Navigator drawerContentOptions={menuConfig} drawerContent={(props) => <Menu {...props} email={email} name={name} />}>
+        <Drawer.Navigator screenOptions={menuConfig} 
+            drawerContent={(props) => <Menu {...props} email={email} name={name} />}>
             <Drawer.Screen name="Today" options={{ title: 'Hoje' }}>
                 {props => <TaskList {...props} title='Hoje' daysAhead={0} />}
             </Drawer.Screen>
