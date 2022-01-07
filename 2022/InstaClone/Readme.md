@@ -11,3 +11,6 @@
 - Linkar os assets `npx react-native link`
 - Instalar app `npx react-native run-android`
 
+## 004 - Author
+
+- Instalar o gravatar `yarn add react-native-gravatar`

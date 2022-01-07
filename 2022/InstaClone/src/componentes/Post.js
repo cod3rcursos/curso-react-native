@@ -1,9 +1,11 @@
 import React from 'react'
 import { View, Image, StyleSheet, Dimensions } from 'react-native'
+import Author from './Author'
 
 export default props =>
     <View style={styles.container}>
         <Image source={props.image} style={styles.image}/>
+        <Author email='wcaquino@gmail.com' nickname='Wagner' />
     </View>
 
 const styles = StyleSheet.create({
