@@ -14,3 +14,7 @@
 ## 004 - Author
 
 - Instalar o gravatar `yarn add react-native-gravatar`
+
+## 006 - AddComment
+
+- Instalar os icones `yarn add react-native-vector-icons`
