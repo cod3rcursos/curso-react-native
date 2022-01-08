@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
         marginTop: Platform.OS === 'ios' ? 20 : 0,
         padding: 10,
         borderBottomWidth: 1,
-        borderColor: '#BBB'
+        borderColor: '#BBB',
+        width: '100%'
     },
     rowContainer: {
         flexDirection: 'row',
