@@ -18,3 +18,14 @@
 ## 006 - AddComment
 
 - Instalar os icones `yarn add react-native-vector-icons`
+
+## 008 - Bottom Navigation
+
+- Instalar o navigation e dependências
+
+```
+yarn add @react-navigation/native
+yarn add react-native-screens react-native-safe-area-context
+
+yarn add @react-navigation/bottom-tabs
+```
