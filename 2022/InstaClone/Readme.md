@@ -35,3 +35,12 @@ yarn add @react-navigation/bottom-tabs
 - Instalar o image picker `yarn add react-native-image-picker`
 
 - Reiniciar o metro `npx react-native start --reset-cache` e reinstalar a aplicação `npx react-native run-android`
+
+## 012 - AuthOrProfile
+
+- Instalar o navigation e dependências
+
+```
+yarn add @react-navigation/stack
+yarn add react-native-gesture-handler
+```
