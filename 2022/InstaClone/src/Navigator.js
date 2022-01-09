@@ -12,6 +12,7 @@ import Register from './screens/Register';
 
 const Tab = createBottomTabNavigator()
 const SwitchStack = createStackNavigator()
+const AuthStack = createStackNavigator()
 
 const routeIcon = {
     Feed: 'home',
@@ -22,12 +23,19 @@ const routeIcon = {
 export default props => {
     const [isLogged, setIsLogged] = useState(false)
 
+    const Auth = () => (
+        <AuthStack.Navigator initialRouteName="Login">
+            <AuthStack.Screen name="Login" component={Login} />
+            <AuthStack.Screen name="Register" component={Register} />
+        </AuthStack.Navigator>
+    )
+
     const AuthOrProfile = () => (
         <SwitchStack.Navigator screenOptions={{headerShown: false}}>
             {isLogged ? 
                 <SwitchStack.Screen name="Home" component={Profile} />
             : 
-                <SwitchStack.Screen name="Auth" component={Register} /> 
+                <SwitchStack.Screen name="Auth" component={Auth} /> 
             }
         </SwitchStack.Navigator>
     )
