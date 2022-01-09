@@ -8,6 +8,7 @@ import Feed from './screens/Feed'
 import AddPhoto from './screens/AddPhoto'
 import Profile from './screens/Profile'
 import Login from './screens/Login'
+import Register from './screens/Register';
 
 const Tab = createBottomTabNavigator()
 const SwitchStack = createStackNavigator()
@@ -26,7 +27,7 @@ export default props => {
             {isLogged ? 
                 <SwitchStack.Screen name="Home" component={Profile} />
             : 
-                <SwitchStack.Screen name="Auth" component={Login} /> 
+                <SwitchStack.Screen name="Auth" component={Register} /> 
             }
         </SwitchStack.Navigator>
     )
