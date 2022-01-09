@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import Feed from './screens/Feed'
+import AddPhoto from './screens/AddPhoto'
 
 const Tab = createBottomTabNavigator()
 
@@ -23,7 +24,7 @@ export default props =>
                         <Ionicons name={routeIcon[route.name]} size={size} color={color} />
                 })}>
             <Tab.Screen name="Feed" component={Feed}/>
-            <Tab.Screen name="AddPhoto" component={Feed} />
+            <Tab.Screen name="AddPhoto" component={AddPhoto} />
             <Tab.Screen name="Profile" component={Feed} />
         </Tab.Navigator>
     </NavigationContainer>
