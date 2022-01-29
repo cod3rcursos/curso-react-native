@@ -76,3 +76,21 @@ firebase init
 - Fazer o deploy da function
     - Na pasta raiz do projeto, executar: `firebase deploy`
     - Atentar para não executar na pasta das functions
+
+
+## 036 - Token
+
+- Alterar as Rules do "Realtime database"
+```
+{
+  "rules": {
+    ".read": "now < 1644472800000",
+    ".write": "auth != null",  
+    "users": {
+      "$id": {
+        ".write": "!data.exists()"
+      }
+    }
+  }
+}
+```

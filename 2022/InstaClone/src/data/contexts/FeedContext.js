@@ -1,12 +1,14 @@
 import React, { createContext, useState } from "react"
 import axios from 'axios'
 import useEvent from '../hooks/useEvent'
+import useUser from '../hooks/useUser'
 
 const FeedContext = createContext({})
 
 export const FeedProvider = ({ children }) => {
     const [posts, setPosts] = useState([])
     const { startingUpload, finishedUpload, setMessage } = useEvent()
+    const { token } = useUser()
 
     const feedInternalContext = {
         posts,
@@ -38,11 +40,12 @@ export const FeedProvider = ({ children }) => {
                     }
                 })
                 post.image = resStorage.data.imageUrl
-                await axios.post('/posts.json', post)
+                await axios.post(`/posts.json?auth=${token}`, post)
                 finishedUpload()
                 feedInternalContext.fetchPosts()
             } catch(err) {
                 setMessage(err.message, 'Erro')
+                finishedUpload()
             }
         },
         addComment: async function(postId, comment) {
@@ -50,7 +53,7 @@ export const FeedProvider = ({ children }) => {
                 const res = await axios.get(`/posts/${postId}.json`)
                 const comments = res.data.comments || []
                 comments.push(comment)
-                await axios.patch(`/posts/${postId}.json`, {comments})
+                await axios.patch(`/posts/${postId}.json?auth=${token}`, {comments})
                 feedInternalContext.fetchPosts()
             } catch(err) {
                 setMessage(err.message, 'Erro')
