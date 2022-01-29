@@ -6,7 +6,7 @@ const FeedContext = createContext({})
 
 export const FeedProvider = ({ children }) => {
     const [posts, setPosts] = useState([])
-    const { startingUpload, finishedUpload } = useEvent()
+    const { startingUpload, finishedUpload, setMessage } = useEvent()
 
     const feedInternalContext = {
         posts,
@@ -23,7 +23,7 @@ export const FeedProvider = ({ children }) => {
                 }
                 setPosts(postsTemp)
             } catch(err) {
-                console.log(err)
+                setMessage(err.message, 'Erro')
             }
         },
         addPost: async function(post) {
@@ -42,15 +42,19 @@ export const FeedProvider = ({ children }) => {
                 finishedUpload()
                 feedInternalContext.fetchPosts()
             } catch(err) {
-                console.log(err)
+                setMessage(err.message, 'Erro')
             }
         },
         addComment: async function(postId, comment) {
-            const res = await axios.get(`/posts/${postId}.json`)
-            const comments = res.data.comments || []
-            comments.push(comment)
-            await axios.patch(`/posts/${postId}.json`, {comments})
-            feedInternalContext.fetchPosts()
+            try {
+                const res = await axios.get(`/posts/${postId}.json`)
+                const comments = res.data.comments || []
+                comments.push(comment)
+                await axios.patch(`/posts/${postId}.json`, {comments})
+                feedInternalContext.fetchPosts()
+            } catch(err) {
+                setMessage(err.message, 'Erro')
+            }
         }
     }
 
