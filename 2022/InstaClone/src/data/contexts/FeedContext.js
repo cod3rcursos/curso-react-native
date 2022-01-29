@@ -45,17 +45,12 @@ export const FeedProvider = ({ children }) => {
                 console.log(err)
             }
         },
-        addComment: function(postId, comment) {
-            const postsTemp = posts.map(post => {
-                if(post.id === postId) {
-                    if(!post.comments) {
-                        post.comments = []
-                    } 
-                    post.comments = post.comments.concat( comment )
-                }
-                return post
-            })
-            setPosts(postsTemp)
+        addComment: async function(postId, comment) {
+            const res = await axios.get(`/posts/${postId}.json`)
+            const comments = res.data.comments || []
+            comments.push(comment)
+            await axios.patch(`/posts/${postId}.json`, {comments})
+            feedInternalContext.fetchPosts()
         }
     }
 
