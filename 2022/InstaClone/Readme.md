@@ -44,3 +44,9 @@ yarn add @react-navigation/bottom-tabs
 yarn add @react-navigation/stack
 yarn add react-native-gesture-handler
 ```
+
+## 024 - Add Post no Firebase
+
+- Criar um projeto no firebase
+ - Criar uma realtime database
+- Instalar o axios `yarn add axios`

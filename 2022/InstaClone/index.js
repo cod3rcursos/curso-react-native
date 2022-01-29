@@ -7,6 +7,10 @@ import Navigator from './src/Navigator'
 import { FeedProvider } from "./src/data/contexts/FeedContext"
 import { UserProvider } from "./src/data/contexts/UserContext"
 
+import axios from 'axios'
+
+axios.defaults.baseURL='https://instaclone-b78e8-default-rtdb.firebaseio.com/'
+
 const Root = () => (
     <UserProvider>
         <FeedProvider>
