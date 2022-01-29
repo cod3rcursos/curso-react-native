@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,6 +9,8 @@ import AddPhoto from './screens/AddPhoto'
 import Profile from './screens/Profile'
 import Login from './screens/Login'
 import Register from './screens/Register';
+
+import useUser from './data/hooks/useUser'
 
 const Tab = createBottomTabNavigator()
 const SwitchStack = createStackNavigator()
@@ -21,7 +23,7 @@ const routeIcon = {
 }
 
 export default props => {
-    const [isLogged, setIsLogged] = useState(false)
+    const { email } = useUser()
 
     const Auth = () => (
         <AuthStack.Navigator initialRouteName="Login">
@@ -32,7 +34,7 @@ export default props => {
 
     const AuthOrProfile = () => (
         <SwitchStack.Navigator screenOptions={{headerShown: false}}>
-            {isLogged ? 
+            {email ? 
                 <SwitchStack.Screen name="Home" component={Profile} />
             : 
                 <SwitchStack.Screen name="Auth" component={Auth} /> 
