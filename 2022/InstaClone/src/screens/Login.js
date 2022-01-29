@@ -7,12 +7,15 @@ import {
     TextInput
 } from 'react-native'
 
+import useUser from "../data/hooks/useUser"
+
 export default props => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const { login } = useUser()
 
-    const login = () => {
-        
+    const onLogin = () => {
+        login(email, password)
     }
 
     return (
@@ -23,7 +26,7 @@ export default props => {
             <TextInput placeholder='Senha' style={styles.input}
                 secureTextEntry={true} value={password}
                 onChangeText={setPassword} />
-            <TouchableOpacity onPress={login} style={styles.buttom}>
+            <TouchableOpacity onPress={onLogin} style={styles.buttom}>
                 <Text style={styles.buttomText}>Login</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {props.navigation.navigate('Register')}} style={styles.buttom}>
