@@ -70,3 +70,9 @@ firebase init
 - Obter o projectId e keyFile no Firebase
     - Project Overview > Project Settings > General
     - Project Overview > Project Settings > Service Accounts
+
+## 028 - Storage #3
+
+- Fazer o deploy da function
+    - Na pasta raiz do projeto, executar: `firebase deploy`
+    - Atentar para não executar na pasta das functions
