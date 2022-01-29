@@ -31,9 +31,21 @@ export const UserProvider = ({ children }) => {
                 console.log(err)
             }
         },
-        login: function(email, password) {
-            setName('Temporario')
-            setEmail(email)
+        login: async function(email, password) {
+            try {
+                const resAuth = await axios.post(`${FIREBASE_AUTH_BASE_URL}/verifyPassword?key=${API_KEY}`, {
+                    email,
+                    password,
+                    returnSecureToken: true
+                })
+                if(resAuth.data.localId) {
+                    const res = await axios.get(`/users/${resAuth.data.localId}.json`)
+                    setName(res.data.name)
+                    setEmail(email)
+                }
+            } catch (err) {
+                console.log(err)
+            }
         },
         logout: function() {
             setName('')

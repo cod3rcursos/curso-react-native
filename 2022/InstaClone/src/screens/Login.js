@@ -14,10 +14,6 @@ export default props => {
     const [password, setPassword] = useState('')
     const { login } = useUser()
 
-    const onLogin = () => {
-        login(email, password)
-    }
-
     return (
         <View style={styles.container}>
             <TextInput placeholder='Email' style={styles.input}
@@ -26,7 +22,7 @@ export default props => {
             <TextInput placeholder='Senha' style={styles.input}
                 secureTextEntry={true} value={password}
                 onChangeText={setPassword} />
-            <TouchableOpacity onPress={onLogin} style={styles.buttom}>
+            <TouchableOpacity onPress={() => login(email, password)} style={styles.buttom}>
                 <Text style={styles.buttomText}>Login</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {props.navigation.navigate('Register')}} style={styles.buttom}>
