@@ -64,3 +64,9 @@ firebase init
 
 -Entrar na pasta "functions" e instalar os pacotes `yarn add @google-cloud/storage cors uuid-v4`
     - Versão mínima do node: 16.x
+
+## 027 - Storage #2
+
+- Obter o projectId e keyFile no Firebase
+    - Project Overview > Project Settings > General
+    - Project Overview > Project Settings > Service Accounts
