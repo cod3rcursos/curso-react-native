@@ -4,13 +4,24 @@ import AddComment from './AddComment'
 import Author from './Author'
 import Comments from './Comments'
 
-export default props =>
-    <View style={styles.container}>
-        <Image source={props.image} style={styles.image}/>
-        <Author email={props.email} nickname={props.nickname} />
-        <Comments comments={props.comments} />
+import useUser from '../data/hooks/useUser'
+
+export default props => {
+    const { email } = useUser()
+
+    const addComment = email? 
         <AddComment postId={props.id} />
-    </View>
+        : null
+
+    return (
+        <View style={styles.container}>
+            <Image source={props.image} style={styles.image}/>
+            <Author email={props.email} nickname={props.nickname} />
+            <Comments comments={props.comments} />
+            {addComment}
+        </View>
+    )
+}
 
 const styles = StyleSheet.create({
     container: {
