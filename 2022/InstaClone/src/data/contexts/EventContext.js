@@ -6,23 +6,28 @@ export const EventProvider = ({ children }) => {
     const [uploading, setUploading] = useState(false)
     const [message, setMessage] = useState('')
     const [messageTitle, setMessageTitle] = useState('')
+    const [splash, setSplash] = useState(true)
 
     const eventInternalContext = {
         uploading,
         messageTitle,
         message,
+        splash,
         startingUpload: function() {
             setUploading(true)
         },
         finishedUpload: function() {
             setUploading(false)
         },
-        setMessage(message, title) {
+        setMessage: function(message, title) {
             setMessage(message)
             setMessageTitle(title)
         },
-        clearMessage() {
+        clearMessage: function() {
             eventInternalContext.setMessage('', '')
+        },
+        endSplash: function() {
+            setSplash(false)
         }
     }
 
