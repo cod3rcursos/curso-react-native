@@ -10,7 +10,7 @@ import {
     Dimensions,
     TouchableOpacity 
 } from "react-native";
-
+import useEffectIf from "../hooks/UseEffectIf";
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import useFeed from '../data/hooks/useFeed'
 import useUser from '../data/hooks/useUser'
@@ -62,10 +62,13 @@ export default props => {
             image,
             comments: [{nickname, comment}]
         })
-        // setImage(null)
-        // setComment('')
-        // props.navigation.navigate('Feed')
     }
+
+    useEffectIf(() => {
+        setImage(null)
+        setComment('')
+        props.navigation.navigate('Feed')
+    }, uploading, false)
 
     return (
         <ScrollView>
