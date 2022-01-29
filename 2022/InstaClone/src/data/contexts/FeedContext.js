@@ -26,6 +26,15 @@ export const FeedProvider = ({ children }) => {
         },
         addPost: async function(post) {
             try {
+                const resStorage = await axios({
+                    url: 'uploadImage',
+                    baseURL: 'https://us-central1-instaclone-b78e8.cloudfunctions.net',
+                    method: 'post',
+                    data: {
+                        image: post.image.base64
+                    }
+                })
+                post.image = resStorage.data.imageUrl
                 await axios.post('/posts.json', post)
             } catch(err) {
                 console.log(err)
