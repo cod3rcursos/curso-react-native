@@ -7,10 +7,14 @@ import {
     TextInput
 } from 'react-native'
 
+import useUser from '../data/hooks/useUser'
+
 export default props => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const { createUser } = useUser()
 
     return (
         <View style={styles.container}>
@@ -20,7 +24,7 @@ export default props => {
                 keyboardType='email-address' onChangeText={setEmail} />
             <TextInput placeholder='Senha' style={styles.input}
                 secureTextEntry={true} value={password} onChangeText={setPassword} />
-            <TouchableOpacity onPress={() => {}} style={styles.buttom}>
+            <TouchableOpacity onPress={() => createUser({name, email, password})} style={styles.buttom}>
                 <Text style={styles.buttomText}>Salvar</Text>
             </TouchableOpacity>
         </View>
