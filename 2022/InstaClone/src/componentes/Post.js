@@ -9,7 +9,7 @@ export default props =>
         <Image source={props.image} style={styles.image}/>
         <Author email={props.email} nickname={props.nickname} />
         <Comments comments={props.comments} />
-        <AddComment />
+        <AddComment postId={props.id} />
     </View>
 
 const styles = StyleSheet.create({
