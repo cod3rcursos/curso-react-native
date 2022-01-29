@@ -50,3 +50,17 @@ yarn add react-native-gesture-handler
 - Criar um projeto no firebase
  - Criar uma realtime database
 - Instalar o axios `yarn add axios`
+
+## 026 - Storage #1
+
+- Alterar o plano do firebase para o Blaze
+- Executar alguns comandos para preparar o projeto de functions
+
+```
+npm install -g firebase-tools
+firebase login
+firebase init
+```
+
+-Entrar na pasta "functions" e instalar os pacotes `yarn add @google-cloud/storage cors uuid-v4`
+    - Versão mínima do node: 16.x
