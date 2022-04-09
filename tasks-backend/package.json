@@ -17,7 +17,7 @@
     "express": "4.17.1",
     "jwt-simple": "0.5.6",
     "knex": "0.20.7",
-    "moment": "2.24.0",
+    "moment": "2.29.2",
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
     "pg": "7.17.0"
