@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-action-button": "^2.8.4",
