@@ -17,7 +17,7 @@
     "react-native": "0.63.2",
     "react-native-elements": "^2.2.1",
     "react-native-gesture-handler": "^1.7.0",
-    "react-native-reanimated": "^1.13.0",
+    "react-native-reanimated": "^2.10.0",
     "react-native-safe-area-context": "^3.1.6",
     "react-native-screens": "^2.10.1",
     "react-native-vector-icons": "^7.0.0"
