@@ -15,7 +15,7 @@
   "dependencies": {
     "@google-cloud/storage": "^5.18.1",
     "cors": "^2.8.5",
-    "firebase-admin": "^9.8.0",
+    "firebase-admin": "^11.4.1",
     "firebase-functions": "^3.14.1",
     "uuid-v4": "^0.1.0"
   },
