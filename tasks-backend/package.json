@@ -19,7 +19,7 @@
     "knex": "0.20.7",
     "moment": "2.24.0",
     "passport": "0.4.1",
-    "passport-jwt": "4.0.0",
+    "passport-jwt": "4.0.1",
     "pg": "7.17.0"
   },
   "devDependencies": {
