@@ -16,7 +16,7 @@
     "cors": "2.8.5",
     "express": "4.17.1",
     "jwt-simple": "0.5.6",
-    "knex": "0.20.7",
+    "knex": "2.4.0",
     "moment": "2.24.0",
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
